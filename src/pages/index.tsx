@@ -1,4 +1,7 @@
 import * as React from "react"
+import clsx from 'clsx'
+import { makeStyles } from "@mui/styles"
+import { colors } from "@mui/material"
 
 // styles
 const pageStyles = {
@@ -62,21 +65,23 @@ const docLink = {
   color: "#8954A8",
 }
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
+const useStyles = makeStyles({
+  badgeStyle: {
+    color: "#fff",
+    backgroundColor: "#088413",
+    border: "1px solid #088413",
+    fontSize: 11,
+    fontWeight: "bold",
+    letterSpacing: 1,
+    borderRadius: 4,
+    padding: "4px 6px",
+    display: "inline-block",
+    position: "relative",
+    top: -2,
+    marginLeft: 10,
+    lineHeight: 1,
+  },
+});
 
 // data
 const links = [
@@ -126,7 +131,9 @@ const links = [
 ]
 
 // markup
-const IndexPage = () => {
+export default function IndexPage() {
+  const classes = useStyles();
+  
   return (
     <main style={pageStyles}>
       <title>Home Page</title>
@@ -164,9 +171,10 @@ const IndexPage = () => {
                 {link.text}
               </a>
               {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
+                <span className={classes.badgeStyle} aria-label="New Badge">
                   NEW!
                 </span>
+                
               )}
               <p style={descriptionStyle}>{link.description}</p>
             </span>
@@ -180,5 +188,3 @@ const IndexPage = () => {
     </main>
   )
 }
-
-export default IndexPage
