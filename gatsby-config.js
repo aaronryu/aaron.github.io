@@ -18,6 +18,7 @@ module.exports = {
     //     trackingId: "",
     //   },
     // },
+    "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
