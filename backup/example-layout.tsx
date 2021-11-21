@@ -14,6 +14,13 @@ const ContainerDiv = styled('div')((({ theme: Theme }) => ({
   fontFamily: 'sans-serif',
 })))
 
+const ContainerCss = {
+  backgroundColor: 'hotpink',
+  '&:hover': {
+    color: 'lightgreen'
+  }
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     heading: {
@@ -37,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Layout({ pageTitle, children }) {
   const classes = useStyles()
   return (
-    <ContainerDiv>
+    <ContainerDiv css={ContainerCss}>
       <title>{pageTitle}</title>
       <nav>
         <ul className={clsx(classes.navLinks)}>
