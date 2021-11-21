@@ -1,7 +1,7 @@
 
 import { css, jsx } from '@emotion/react'
 import * as React from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { createStyles, makeStyles } from '@mui/styles'
 import { spacing, Theme } from '@mui/system'
 import { colors } from '@mui/material'
@@ -16,6 +16,12 @@ const ContainerDiv = styled('div')((({ theme: Theme }) => ({
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    siteTitle: {
+      fontSize: '3rem',
+      color: 'gray',
+      fontWeight: 700,
+      margin: '3rem 0'
+    },
     heading: {
       color: 'rebeccapurple'
     },
@@ -36,9 +42,19 @@ const useStyles = makeStyles((theme: Theme) =>
 // destructuring
 export default function Layout({ pageTitle, children }) {
   const classes = useStyles()
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
   return (
     <ContainerDiv>
-      <title>{pageTitle}</title>
+      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      <header className={classes.siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
         <ul className={clsx(classes.navLinks)}>
           <li className={classes.navLinkItem}>
