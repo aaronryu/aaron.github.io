@@ -1,4 +1,4 @@
-/** @jsx jsx */
+
 import { css, jsx } from '@emotion/react'
 import * as React from 'react'
 import { Link } from 'gatsby'
@@ -14,7 +14,14 @@ const ContainerDiv = styled('div')((({ theme: Theme }) => ({
   fontFamily: 'sans-serif',
 })))
 
-const useStyles = makeStyles(( theme: Theme ) =>
+const ContainerCss = {
+  backgroundColor: 'hotpink',
+  '&:hover': {
+    color: 'lightgreen'
+  }
+}
+
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     userProfile: {
       color: theme.palette.primary,
@@ -29,7 +36,7 @@ const useStyles = makeStyles(( theme: Theme ) =>
 // destructuring
 export default function Layout({ pageTitle, children }) {
   return (
-    <ContainerDiv css={[]} >
+    <ContainerDiv css={ContainerCss}>
       <title>{pageTitle}</title>
       <nav>
         <ul>
