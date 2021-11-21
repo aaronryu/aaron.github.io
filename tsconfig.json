@@ -1,0 +1,7 @@
+{
+    // https://github.com/emotion-js/emotion/issues/1249
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "jsxImportSource": "@emotion/react",
+    }
+}
